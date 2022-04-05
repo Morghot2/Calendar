@@ -54,6 +54,7 @@ def list_vCalendar(calendar):
        "X-LIC-LOCATION:Europe/Warsaw"
        )
     list_in_vCalendar_format(calendar)
+    print("END:VCALENDAR")
     
     
 
