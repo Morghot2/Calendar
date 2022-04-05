@@ -17,6 +17,9 @@ class ListingStrategy:
         pass
 
 
+calendar = []
+
+
 def list_calendar(calendar, listing_strategy):
     # listing_strategy.begin()
     for event in calendar:
@@ -34,7 +37,77 @@ def list_calendar(calendar, listing_strategy):
         print(f'Date: {date}, {time}')
 
 
-    # print(event['title'])
+
+
+
+
+
+
+
+
+def list_vCalendar(calendar):
+    print (
+       "BEGIN:VCALENDAR"
+       "VERSION:2.0"
+       "BEGIN:VTIMEZONE"
+       "TZID:Europe/Warsaw"
+       "X-LIC-LOCATION:Europe/Warsaw"
+       )
+    list_in_vCalendar_format(calendar)
+    
+    
+
+
+
+
+calendar = [{
+    'Title': "Programowanie",
+    'Date': '28.02.2010',
+    'Time': '08:00'
+    
+}]
+
+def list_in_vCalendar_format(calendar):
+    for event in calendar:
+        for element in event:
+            if element == 'Date':
+                splitted_date = event[element].split(".")[::-1]
+                final_date = '.'.join(splitted_date).replace('.', '')
+            if element == 'Time':
+                splitted_time = event[element].split(".")[::-1]
+                final_time = '.'.join(splitted_time).replace(':', '')
+            if element == "Title":
+                final_title = event[element]
+        print(final_title)
+                
+        print(final_date)
+        print(final_time)
+        print("BEGIN:VEVENT")
+        print(f'DTSTART:{final_date}T{final_time}00')
+        print(f'DTSTART:{final_date}T{final_time}00')
+        print(f'SUMMARY:{final_title}')
+        print("END:VEVENT")
+
+            
+
+
+
+
+
+# txt = "hello, my name is Peter, I am 26 years old"
+
+# x = txt.split(", ")
+# list_in_vCalendar_format(calendar)
+# print(x)
+
+
+
+
+
+
+
+
+   # print(event['title'])
     # print()
     # for key in event:
     #     print(key,': ', event[key])
