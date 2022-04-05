@@ -17,7 +17,7 @@ class ListingStrategy:
         pass
 
 
-calendar = []
+
 
 
 def list_calendar(calendar, listing_strategy):
@@ -45,27 +45,17 @@ def list_calendar(calendar, listing_strategy):
 
 
 
-def list_vCalendar(calendar):
-    print (
-       "BEGIN:VCALENDAR"
-       "VERSION:2.0"
-       "BEGIN:VTIMEZONE"
-       "TZID:Europe/Warsaw"
-       "X-LIC-LOCATION:Europe/Warsaw"
-       )
-    list_in_vCalendar_format(calendar)
-    print("END:VCALENDAR")
-    
-    
-
-
-
 
 calendar = [{
     'Title': "Programowanie",
     'Date': '28.02.2010',
     'Time': '08:00'
     
+}, 
+{
+    'Title': "Fizyka",
+    'Date': '26.01.2012',
+    'Time': '23:15'
 }]
 
 def list_in_vCalendar_format(calendar):
@@ -79,28 +69,22 @@ def list_in_vCalendar_format(calendar):
                 final_time = '.'.join(splitted_time).replace(':', '')
             if element == "Title":
                 final_title = event[element]
-        print(final_title)
-                
-        print(final_date)
-        print(final_time)
         print("BEGIN:VEVENT")
         print(f'DTSTART:{final_date}T{final_time}00')
         print(f'DTSTART:{final_date}T{final_time}00')
         print(f'SUMMARY:{final_title}')
         print("END:VEVENT")
-
-            
-
-
-
-
-
-# txt = "hello, my name is Peter, I am 26 years old"
-
-# x = txt.split(", ")
 # list_in_vCalendar_format(calendar)
-# print(x)
-
+def list_vCalendar(calendar):
+    print("BEGIN:VCALENDAR")
+    print("VERSION:2.0")
+    print("BEGIN:VTIMEZONE")
+    print("TZID:Europe/Warsaw")
+    print("X-LIC-LOCATION:Europe/Warsaw")
+    list_in_vCalendar_format(calendar)
+    print("END:VCALENDAR")
+    
+list_vCalendar(calendar)
 
 
 
