@@ -23,11 +23,6 @@ def menu():
     elif action == "2" and calendar:
         list_calendar(calendar)
     elif action == "3" and calendar:
-        if len(calendar):
-            print('true')
-        else:
-            print('false')
-        print(len(calendar))
         list_vCalendar(calendar)
     elif action == "4":  
         is_working = False
@@ -83,13 +78,12 @@ def add_event():
     if event_title_set.issubset(allowed):
         new_event.update({'Title': event_title})
         new_date = input('Please provide a date in DD.MM.YYYY format: ')
-        if re.match("^\d\d.\d\d.\d\d\d\d$", new_date):
+        if re.match("^\d\d[.]\d\d[.]\d\d\d\d$", new_date):
             new_event.update({'Date': new_date})
             new_time = input('Please provide time in HH:MM format: ')
-            if re.match('^\d\d:\d\d$', new_time):
+            if re.match('^\d\d[:]\d\d$', new_time):
                 new_event.update({'Time': new_time})
                 calendar.append(new_event)
-   
             else:
                 print("Invalid input")
         else:
