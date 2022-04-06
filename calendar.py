@@ -1,26 +1,5 @@
-'''
-W tym pliku znajdziesz kod odpowiedzialny za wyświetlanie zdarzeń z kalendarza.
 
-Do zmiany zachowania funkcji list_calendar wykorzystaj strategię ListingStrategy.
-
-'''
-
-
-class ListingStrategy:
-    def begin(self):
-        pass
-
-    def event(self, title, date, time):
-        pass
-
-    def end(self):
-        pass
-
-
-
-
-
-def list_calendar(calendar, listing_strategy):
+def list_calendar(calendar):
     # listing_strategy.begin()
     for event in calendar:
         for key in event:
@@ -35,28 +14,6 @@ def list_calendar(calendar, listing_strategy):
                 # key = 'time':
                 time = event[key]
         print(f'Date: {date}, {time}')
-
-
-
-
-
-
-
-
-
-
-
-calendar = [{
-    'Title': "Programowanie",
-    'Date': '28.02.2010',
-    'Time': '08:00'
-    
-}, 
-{
-    'Title': "Fizyka",
-    'Date': '26.01.2012',
-    'Time': '23:15'
-}]
 
 def list_in_vCalendar_format(calendar):
     for event in calendar:
@@ -84,7 +41,6 @@ def list_vCalendar(calendar):
     list_in_vCalendar_format(calendar)
     print("END:VCALENDAR")
     
-list_vCalendar(calendar)
 
 
 
@@ -92,9 +48,4 @@ list_vCalendar(calendar)
 
 
 
-   # print(event['title'])
-    # print()
-    # for key in event:
-    #     print(key,': ', event[key])
 
-# listing_strategy.end()
