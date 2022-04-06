@@ -1,4 +1,3 @@
-
 # def list_calendar(calendar):
 #     for event in calendar:
 #         date = ''
@@ -40,7 +39,6 @@
 #     print("X-LIC-LOCATION:Europe/Warsaw")
 #     list_in_vCalendar_format(calendar)
 #     print("END:VCALENDAR")
-    
 
 
 
