@@ -1,6 +1,5 @@
-# from calendar import list_calendar, list_in_vCalendar_format
-# from menu import menu_display
 import string
+import re
 
 calendar = [{
     'Title': "Programowanie",
@@ -82,22 +81,29 @@ def list_vCalendar(calendar):
     print("END:VCALENDAR")
 
 def add_event():
+    global calendar
     new_event = {}
     event_title = input('Please provide a title: ')
-    event_title_set = set(input('Please provide a title: '))
+    event_title_set = set(event_title)
     allowed = set(string.ascii_letters + string.digits + '.' + ',' + '-' +' ')
-    # if any(element in event_title for element in allowed):
     if event_title_set.issubset(allowed):
         new_event.update({'Title': event_title})
-
-        print("Valid")
+        new_date = input('Please provide a date in DD.MM.YYYY format: ')
+        if re.match("^\d\d.\d\d.\d\d\d\d$", new_date):
+            new_event.update({'Date': new_date})
+            new_time = input('Please provide time in DD.MM.YYYY format: ')
+            if re.match('^\d\d:\d\d$', new_time):
+                new_event.update({'Time': new_time})
+                calendar.append(new_event)
+   
+            else:
+                print("Invalid input")
+        else:
+            print("Invalid input")
     else:
-        print("Invalid")
-    # if (re.findall("[A-Z][a-z][1-9]][-,. ]", event_title)):
-    #     result = re.findall("[A-Z][a-z][1-9]][-,. ]", event_title)
-    #     print(result)
-    # else:
-    #     print("Invalid input")
+        print("Invalid input")
+    
+
 
 
 main()
