@@ -71,7 +71,7 @@ def list_in_vCalendar_format(calendar):
                 final_title = event[element]
         print("BEGIN:VEVENT")
         print(f'DTSTART:{final_date}T{final_time}00')
-        print(f'DTSTART:{final_date}T{final_time}00')
+        print(f'DTEND:{final_date}T{final_time}00')
         print(f'SUMMARY:{final_title}')
         print("END:VEVENT")
 # list_in_vCalendar_format(calendar)
