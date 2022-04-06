@@ -1,5 +1,6 @@
-# from calendar import *
-# from menu import *
+# from calendar import list_calendar, list_in_vCalendar_format
+# from menu import menu_display
+import string
 
 calendar = [{
     'Title': "Programowanie",
@@ -16,7 +17,6 @@ is_working = True
 
 
 def main():
-    global is_working
     while is_working:
         menu()
 
@@ -29,9 +29,8 @@ def menu():
         4. Exit
     """)
     action = input("Choose an option: ")
-
     if action == "1":
-        print('dupa')
+        add_event()
     elif action == "2":
         list_calendar(calendar)
     elif action == "3":
@@ -82,5 +81,26 @@ def list_vCalendar(calendar):
     list_in_vCalendar_format(calendar)
     print("END:VCALENDAR")
 
+def add_event():
+    new_event = {}
+    event_title = input('Please provide a title: ')
+    event_title_set = set(input('Please provide a title: '))
+    allowed = set(string.ascii_letters + string.digits + '.' + ',' + '-' +' ')
+    # if any(element in event_title for element in allowed):
+    if event_title_set.issubset(allowed):
+        new_event.update({'Title': event_title})
+
+        print("Valid")
+    else:
+        print("Invalid")
+    # if (re.findall("[A-Z][a-z][1-9]][-,. ]", event_title)):
+    #     result = re.findall("[A-Z][a-z][1-9]][-,. ]", event_title)
+    #     print(result)
+    # else:
+    #     print("Invalid input")
+
 
 main()
+
+
+
