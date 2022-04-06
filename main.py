@@ -1,17 +1,7 @@
 import string
 import re
 
-calendar = [{
-    'Title': "Programowanie",
-    'Date': '28.02.2010',
-    'Time': '08:00'
-    
-}, 
-{
-    'Title': "Fizyka",
-    'Date': '26.01.2012',
-    'Time': '23:15'
-}]
+calendar = []
 is_working = True
 
 
@@ -30,14 +20,18 @@ def menu():
     action = input("Choose an option: ")
     if action == "1":
         add_event()
-    elif action == "2":
+    elif action == "2" and calendar:
         list_calendar(calendar)
-    elif action == "3":
+    elif action == "3" and calendar:
+        if len(calendar):
+            print('true')
+        else:
+            print('false')
+        print(len(calendar))
         list_vCalendar(calendar)
     elif action == "4":  
         is_working = False
-    else:
-        print("Invalid option chosen")
+
 def list_calendar(calendar):
     for event in calendar:
         date = ''
@@ -91,7 +85,7 @@ def add_event():
         new_date = input('Please provide a date in DD.MM.YYYY format: ')
         if re.match("^\d\d.\d\d.\d\d\d\d$", new_date):
             new_event.update({'Date': new_date})
-            new_time = input('Please provide time in DD.MM.YYYY format: ')
+            new_time = input('Please provide time in HH:MM format: ')
             if re.match('^\d\d:\d\d$', new_time):
                 new_event.update({'Time': new_time})
                 calendar.append(new_event)
